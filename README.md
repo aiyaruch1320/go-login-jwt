@@ -16,10 +16,6 @@
 - before start you should install the program from above
 - then use command -> ```git clone git@github.com:aiyaruch1320/go-login-jwt.git```
 - run docker and use command in terminal -> ```docker compose up -d```
-- create user with command in source code path -> ```sudo sh ./scripts/create-user.sh $username $role```
-- you can change _username_ and _role_ 
-- role have ```admin``` & ```user```
-- then use command -> ```make run``` to run go complie
 - use Postman test api
 
 
@@ -31,9 +27,46 @@ Response should be return:
 ```
 OK
 ```
+#### Create user
+```
+POST -> http://localhost:8000/api/register
+```
+Body:
+```
+{
+    "username": "admin",
+    "password": "12345678",
+    "role": "admin" or "user"
+}
+```
+Response when username already exist:
+```
+{
+    "message": "username already exist"
+}
+```
+Response when create user success:
+```
+{
+    "message": "created user"
+}
+```
+Response when role wrong:
+```
+{
+    "message": "role must be admin or user"
+}
+```
 #### Login
 ```
 POST -> http://localhost:8000/login
+```
+Body:
+```
+{
+    "username": "admin",
+    "password": "12345678",
+}
 ```
 Response should be return when success:
 ```

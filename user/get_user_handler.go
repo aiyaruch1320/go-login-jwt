@@ -18,7 +18,7 @@ func GetUserHandler(svc getUserFn) echo.HandlerFunc {
 		username := c.Param("username")
 		user, err := svc.GetUserByUsername(c.Request().Context(), username)
 		if err != nil {
-			return err
+			return c.String(http.StatusBadRequest, err.Error())
 		}
 		return c.JSON(http.StatusOK, user)
 	}
