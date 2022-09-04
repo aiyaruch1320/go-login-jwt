@@ -5,6 +5,7 @@
 - Authentication username and password
 - Data into mongodb
 - Docker compose
+- Hash Password
 
 ## Tech
 - <a href="https://go.dev/dl/"> Go </a>
