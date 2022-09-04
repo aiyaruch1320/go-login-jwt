@@ -44,6 +44,8 @@ func main() {
 		return c.String(http.StatusOK, "OK")
 	})
 	e.POST("/login", login.LoginHandler(user.GetUserByUsername(mongodb)))
+	e.POST("/api/register", user.CreateUserHandler(user.GetUserByUsername(mongodb), user.CreateUser(mongodb)))
+	e.GET("/api/user/:username", user.GetUserHandler(user.GetUserByUsername(mongodb)))
 
 	u := e.Group("")
 	config := middleware.JWTConfig{
